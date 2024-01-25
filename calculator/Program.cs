@@ -1,125 +1,112 @@
-﻿using System;
+#include <iostream>
+#include <cmath>
+#include <Windows.h>
+using namespace std;
 
-class Program
+int main() 
 {
-    static void Main(string[] args)
+    SetConsoleCP(1251);
+    setlocale(0, "Russian");
+    int choice;
+    double a, b, result;
+
+    do 
     {
-        int choice = 0;
+        cout << "1. Сложение" << endl;
+        cout << "2. Вычитание" << endl;
+        cout << "3. Умножение" << endl;
+        cout << "4. Деление" << endl;
+        cout << "5. Возведение в степень" << endl;
+        cout << "6. Нахождение квадратного корня" << endl;
+        cout << "7. Нахождение 1 процента от числа" << endl;
+        cout << "8. Найти факториал числа" << endl;
+        cout << "9. Выйти из программы" << endl;
+        cout << "Выберите операцию: ";
+        cin >> choice;
 
-        while (choice != 9)
+        switch (choice) 
         {
-            Console.WriteLine("Выберите операцию:");
-            Console.WriteLine("1. Сложить два числа");
-            Console.WriteLine("2. Вычесть первое число из второго");
-            Console.WriteLine("3. Умножить два числа");
-            Console.WriteLine("4. Разделить первое число на второе");
-            Console.WriteLine("5. Возвести первое число в степень");
-            Console.WriteLine("6. Найти квадратный корень из числа");
-            Console.WriteLine("7. Найти 1% от числа");
-            Console.WriteLine("8. Найти факториал числа");
-            Console.WriteLine("9. Выйти из программы");
-
-            choice = Convert.ToInt32(Console.ReadLine());
-
-            switch (choice)
+        case 1:
+            cout << "Введите два числа, которые хотите сложить: ";
+            cin >> a >> b;
+            result = a + b;
+            cout << "\nРезультат: " << result << endl;
+            break;
+        case 2:
+            cout << "Введите два числа, которые хотите вычесть: ";
+            cin >> a >> b;
+            result = a - b;
+            cout << "\nРезультат: " << result << endl;
+            break;
+        case 3:
+            cout << "Введите два числа, которые хотите умножить: ";
+            cin >> a >> b;
+            result = a * b;
+            cout << "\nРезультат: " << result << endl;
+            break;
+        case 4:
+            cout << "Введите два числа, которые хотите разделить: ";
+            cin >> a >> b;
+            if (b != 0) 
             {
-                case 1:
-                    Console.Write("Введите первое число: ");
-                    double num1 = Convert.ToDouble(Console.ReadLine());
-                    Console.Write("Введите второе число: ");
-                    double num2 = Convert.ToDouble(Console.ReadLine());
-                    double sum = num1 + num2;
-                    Console.WriteLine($"Сумма: {sum}");
-                    break;
-                case 2:
-                    Console.Write("Введите первое число: ");
-                    double minuend = Convert.ToDouble(Console.ReadLine());
-                    Console.Write("Введите второе число: ");
-                    double subtrahend = Convert.ToDouble(Console.ReadLine());
-                    double difference = minuend - subtrahend;
-                    Console.WriteLine($"Разность: {difference}");
-                    break;
-                case 3:
-                    Console.Write("Введите первое число: ");
-                    double factor1 = Convert.ToDouble(Console.ReadLine());
-                    Console.Write("Введите второе число: ");
-                    double factor2 = Convert.ToDouble(Console.ReadLine());
-                    double product = factor1 * factor2;
-                    Console.WriteLine($"Произведение: {product}");
-                    break;
-                case 4:
-                    Console.Write("Введите первое число: ");
-                    double dividend = Convert.ToDouble(Console.ReadLine());
-                    Console.Write("Введите второе число: ");
-                    double divisor = Convert.ToDouble(Console.ReadLine());
-
-                    if (divisor != 0)
-                    {
-                        double quotient = dividend / divisor;
-                        Console.WriteLine($"Частное: {quotient}");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Ошибка: деление на ноль!");
-                    }
-                    break;
-                case 5:
-                    Console.Write("Введите число: ");
-                    double baseNumber = Convert.ToDouble(Console.ReadLine());
-                    Console.Write("Введите степень: ");
-                    double exponent = Convert.ToDouble(Console.ReadLine());
-                    double power = Math.Pow(baseNumber, exponent);
-                    Console.WriteLine($"Результат возведения в степень: {power}");
-                    break;
-                case 6:
-                    Console.Write("Введите число: ");
-                    double number = Convert.ToDouble(Console.ReadLine());
-
-                    if (number >= 0)
-                    {
-                        double squareRoot = Math.Sqrt(number);
-                        Console.WriteLine($"Квадратный корень: {squareRoot}");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Ошибка: отрицательное число под корнем!");
-                    }
-                    break;
-                case 7:
-                    Console.Write("Введите число: ");
-                    double originalNumber = Convert.ToDouble(Console.ReadLine());
-                    double percent = 0.01 * originalNumber;
-                    Console.WriteLine($"1% от числа: {percent}");
-                    break;
-                case 8:
-                    Console.Write("Введите число: ");
-                    int factorialNumber = Convert.ToInt32(Console.ReadLine());
-
-                    if (factorialNumber >= 0)
-                    {
-                        int result = 1;
-
-                        for (int i = 1; i <= factorialNumber; i++)
-                        {
-                            result *= i;
-                        }
-
-                        Console.WriteLine($"Факториал числа: {result}");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Ошибка: факториал отрицательного числа не определен!");
-                    }
-                    break;
-                case 9:
-                    Console.WriteLine("Программа завершена.");
-                    break;
-                default:
-                    Console.WriteLine("Неверная операция! Попробуйте еще раз.");
-                    break;
+                result = a / b;
+                cout << "\nРезультат: " << result << endl;
             }
-
-            Console.WriteLine();
+            else 
+            {
+                cout << "\nОшибка! Нельзя делить на ноль." << endl;
+            }
+            break;
+        case 5:
+            cout << "Введите число и степень, в которую хотите возвести: ";
+            cin >> a >> b;
+            result = pow(a, b);
+            cout << "\nРезультат: " << result << endl;
+            break;
+        case 6:
+            cout << "Введите число, для которого хотите найти квадратный корень: ";
+            cin >> a;
+            if (a >= 0) 
+            {
+                result = sqrt(a);
+                cout << "\nРезультат: " << result << endl;
+            }
+            else {
+                cout << "\nОшибка! Нельзя извлечь корень из отрицательного числа." << endl;
+            }
+            break;
+        case 7:
+            cout << "Введите число, для которого хотите найти 1 процент: ";
+            cin >> a;
+            result = a * 0.01;
+            cout << "\nРезультат: " << result << endl;
+            break;
+        case 8:
+            cout << "Введите число, для которого хотите найти факториал: ";
+            cin >> a;
+            if (a >= 0) 
+            {
+                result = 1;
+                for (int i = 1; i <= a; i++) {
+                    result *= i;
+                }
+                cout << "\nРезультат: " << result << endl;
+            }
+            else 
+            {
+                cout << "Ошибка. Факториал определен только для неотрицательных чисел." << endl;
+            }
+            break;
+        case 9:
+            cout << "\nПрограмма завершена." << endl;
+            break;
+        default:
+            cout << "\nОшибка! Неверный выбор операции." << endl;
+            break;
         }
-    }
+        cout << endl;
+
+    } while (choice != 9);
+
+    return 0;
 }
